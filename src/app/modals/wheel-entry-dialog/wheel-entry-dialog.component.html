@@ -1,0 +1,53 @@
+
+<link href="https://unpkg.com/@angular/material/prebuilt-themes/deeppurple-amber.css" rel="stylesheet">
+
+<h2 mat-dialog-title>New Wheel Position</h2>
+<br>
+<mat-dialog-content [formGroup]="wheelEntry">
+    <mat-form-field>
+        <input matInput
+                placeholder="Symbol"
+               formControlName="symbol">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-select placeholder="Action"
+            formControlName="action">
+            <mat-option value="CSP">Covered Put</mat-option>
+            <mat-option value="CC">Covered Call</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput [matDatepicker]="myDatepicker"
+            formControlName="date">
+        <mat-datepicker-toggle matSuffix
+                               [for]="myDatepicker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Number of Contracts" formControlName="numContracts">
+    </mat-form-field>
+    <br>    
+    <mat-form-field>
+        <input matInput placeholder="Premium Collected" formControlName="premium">
+    </mat-form-field>
+    <br>    
+    <mat-form-field>
+        <mat-select placeholder="Action"
+            formControlName="status">
+            <mat-option value="open">Open</mat-option>
+            <mat-option value="closed">Closed</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>    
+    <mat-form-field>
+        <input matInput placeholder="Total Recieved" formControlName="totalRecv">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

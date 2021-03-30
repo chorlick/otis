@@ -1,0 +1,106 @@
+<link href="https://unpkg.com/@angular/material/prebuilt-themes/deeppurple-amber.css" rel="stylesheet">
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-globe text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Total P/L</p>
+                            <p class="card-title">$0
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning" >
+                                <button mat-fab type="button"  (click)="createNewEntry();">
+                                    <i style="margin-top:-16px" class="nc-icon nc-simple-add"></i>
+                                </button>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Create New Entry</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title">Positions</h5>
+                <p class="card-category">Overall portofolios positions</p>
+            </div>
+            <div class="card-body ">
+
+                <mat-table [dataSource]="tabaleData" class="mat-elevation-z8" style="width:100%;">
+                    <ng-container matColumnDef="symbol">
+                        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.action}} </mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="date">
+                        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="numContracts">
+                        <mat-header-cell *matHeaderCellDef> Number of Contracts </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.numContracts}} </mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="premium">
+                        <mat-header-cell *matHeaderCellDef> Premium </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.premium}} </mat-cell>
+                    </ng-container>                    
+
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+                    </ng-container>                    
+
+                    <ng-container matColumnDef="totalRecv">
+                        <mat-header-cell *matHeaderCellDef> Total Recieved </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.totalRecv}} </mat-cell>
+                    </ng-container>                    
+
+                    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+                </mat-table>
+
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-history"></i> Updated 3 minutes ago
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
