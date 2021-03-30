@@ -21,7 +21,7 @@ export class WheelEntryDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<WheelEntryDialogComponent>) {
     this.wheelEntry = fb.group({
 
-      symbol: ['', Validators.required],
+      symbol: [null, Validators.required],
       action: ['', Validators.required],
       date: [moment(), Validators.required],
       numContracts: [0, Validators.required],
@@ -42,4 +42,14 @@ export class WheelEntryDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+
+  onPremiumFocousOut() {
+    var premium :number = this.wheelEntry.get('premium').value;
+    var contracts : number = this.wheelEntry.get('numContracts').value;
+    this.wheelEntry.get('totalRecv').setValue(premium * contracts * 100);
+  }
+
+  onContractFocousOut() {
+
+  }
 }

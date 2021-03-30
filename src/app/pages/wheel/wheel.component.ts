@@ -4,6 +4,7 @@ import { WheelEntryDialogComponent } from '../../modals/wheel-entry-dialog/wheel
 import { WheelEntryRefComponent } from '../../modals/wheel-entry-ref/wheel-entry-ref.component'
 import { MatDialog, MatDialogConfig, MatDialogRef  } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 const ELEMENT_DATA: WheelEntry[] = [
@@ -25,7 +26,7 @@ export class WheelComponent implements OnInit {
   }
 
   tableColumns: string[] = ['symbol', 'action', 'date', 'numContracts', 'premium', 'status', 'totalRecv'];
-  tabaleData = ELEMENT_DATA;
+  tabaleData = new MatTableDataSource<WheelEntry>([]);
   createNewEntry() {
     const dialogConfig = new MatDialogConfig(
       
@@ -39,7 +40,10 @@ export class WheelComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
         console.log(result)
-        this.tabaleData.push(result)
+        const data = this.tabaleData.data;
+        data.push(result);
+        this.tabaleData.data = data;
+        
     });
     
   }
